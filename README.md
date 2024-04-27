@@ -9,7 +9,8 @@ Wazuh server is the central component responsible for collecting and analyzing s
 - **Steps**:
   - Click on create. 
   - Go the Marketplace tab and search for wazuh.
-    ![](wazuh-image.png)
+    
+    ![](img/wazuh-image.png)
   - First put an email address. Then a limited pseudo user account (this can be anything).
   - Put a password in
   - Select the Ubuntu image
@@ -37,13 +38,17 @@ Wazuh server is the central component responsible for collecting and analyzing s
   - Go to agents.
   - click on deploy new agent.
   - Next, select the correct architecture and Wazuh server address.
-    ![](Architectue.png)
+    
+    ![](img/Architectue.png)
   - Next, you will be presented with commands to download, install, and start the Wazuh agent. Copy the commands and run them in the Ubuntu Server you just installed.
-    ![](install.png)
+    
+    ![](img/install.png)
   - check the status of the Wazuh agent
-    ![](status-wazuh-agent.png)
+    
+    ![](img/status-wazuh-agent.png)
   - check the wazuh manager
-    ![](deployed-agent.png)
+    
+    ![](img/deployed-agent.png)
     
   
 
@@ -70,21 +75,30 @@ Wazuh server is the central component responsible for collecting and analyzing s
   <timeout>600</timeout>
 </active-response>
 ```
-  ![](configuration.png)
+  ![](img/configuration.png)
 
-  ![](config-details.png)
+  ![](img/config-details.png)
   
 
 This configuration suggests that when a rule with ID 5710 is triggered, the firewall will drop the corresponding traffic for a duration of 10 minutes. It's a common approach for dealing with potential threats or suspicious activity.
-## Results
-### 1. Analysis of Wazuh Alerts
-- **Alerts**: Wazuh generated alerts for each failed login attempt during the brute force attack.
-  ![](attack-technique.png)
+## POC
+### 1.Connectivity Assessment
+- Initially, we check for connectivity between the attacker and the agent.
+  
+  ![](img/connect.png)
 
 
-### 2. Active Response Performance
-- **Effectiveness**: Wazuh's active response mechanism successfully blocked further login attempts from the attacking IP address.
-  ![](Active-response1.png)
+### 2. Attack with Hydra
+- We proceed with the brute force operation using Hydra from Kali.
+  ![](img/hydra.png)
+
+## 3. Effectiveness
+- After the brute force attempt, our rule is activated, resulting in the blocking of the attacker's IP address. We can subsequently verify the status of the connection and review alerts on Wazuh.
+
+  ![](img/test.png)
+
+  ![](img/POC.png)
+  
 
 
 ## Conclusion
