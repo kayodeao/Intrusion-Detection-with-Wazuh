@@ -9,6 +9,7 @@ Wazuh server is the central component responsible for collecting and analyzing s
 - **Steps**:
   - Click on create. 
   - Go the Marketplace tab and search for wazuh.
+    ![](wazuh-image.png)
   - First put an email address. Then a limited pseudo user account (this can be anything).
   - Put a password in
   - Select the Ubuntu image
