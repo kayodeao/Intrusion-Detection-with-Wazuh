@@ -44,33 +44,40 @@ Wazuh server is the central component responsible for collecting and analyzing s
 - **Definition**: A brute force attack is a trial-and-error method used to obtain sensitive information, such as passwords, by systematically trying all possible combinations.
 - **Tool**: Hydra is a popular and versatile password-cracking tool that supports various protocols for online attacks. Hydra supports a multitude of protocols, including SSH, FTP, HTTP, HTTPS, Telnet, and many more. This versatility allows security professionals to test various services and applications.
 - **Steps**:
-  - Configured Hydra to perform a brute force attack on SSH service running on the Ubuntu VM.
-    
+  - Configured Hydra to perform a brute force attack on on the Ubuntu VM.    
   - Executed the attack to simulate an unauthorized login attempt.
+    
+     ```bash
+       hydra -l <Username> -P <password_list.txt> <Ubuntu_Server_IP_Address> ssh
+    ```
 
 ### 2. Wazuh Detection and Response
-- **Detection**: Wazuh captured logs of the brute force attack, including failed login attempts and suspicious activity.
-- **Response**: Configured Wazuh to trigger an active response mechanism to block further login attempts from the attacking IP address.
-- **Additional Measures**: Implemented firewall rules to enhance security posture and mitigate potential threats.
-
+- **Detection**: Wazuh captured logs of the brute force attack, including failed login attempts and suspicious activity. 
+- **Response**: Configured Wazuh to trigger an active response mechanism to block further login attempts from the attacking IP address. **Management > Configuration > Edit configuration** . Click on **Restart Manager** after adding the command below:
+  
+```bash
+<active-response>
+  <command>firewall-drop</command>
+  <location>local</location>
+  <rules_id>5710</rules_id>
+  <timeout>600</timeout>
+</active-response>
+```
+This configuration suggests that when a rule with ID 5710 is triggered, the firewall will drop the corresponding traffic for a duration of 10 minutes. It's a common approach for dealing with potential threats or suspicious activity.
 ## Results
 ### 1. Analysis of Wazuh Alerts
 - **Alerts**: Wazuh generated alerts for each failed login attempt during the brute force attack.
-- **Analysis**: Reviewed the alerts to assess the severity of the attack and identify potential security vulnerabilities.
+
 
 ### 2. Active Response Performance
 - **Effectiveness**: Wazuh's active response mechanism successfully blocked further login attempts from the attacking IP address.
-- **Evaluation**: Evaluated the performance of the active response feature in mitigating the attack without disrupting legitimate traffic.
-- **Issues**: Addressed any false positives or unintended consequences of the active response mechanism.
+
 
 ## Conclusion
 This project demonstrated the effectiveness of Wazuh as an intrusion detection and prevention system. By setting up Wazuh on Linode and deploying agents on virtual machines, we were able to detect and respond to a simulated brute force attack. The project highlights the importance of proactive security measures in safeguarding against potential threats.
 
-## Future Work
-- Implement additional security measures, such as multi-factor authentication, to further strengthen the system's security posture.
-- Explore advanced features of Wazuh, such as threat hunting and anomaly detection, to enhance detection capabilities.
-- Conduct periodic security assessments and updates to ensure the system remains resilient against evolving threats.
+
 
 ## References
 - [Wazuh Documentation](https://documentation.wazuh.com/)
-- [Hydra GitHub Repository](https://github.com/vanhauser-thc/thc-hydra)
+- [Detecting bruteforce attack using wazuh](https://rebman29.medium.com/lab-2-detecting-brute-force-attack-using-wazuh-df11facafbff)
