@@ -5,7 +5,7 @@ This project aims to implement an intrusion detection system using Wazuh, an ope
 
 ## Setup
 ### 1. Setting up Wazuh Server on Linode
-Wazuh server is the central component responsible for collecting and analyzing security events. Linode has a cloud image that you can use to easily set up Wazuh without having to go through the the complicated installation process. 
+Wazuh server is the central component responsible for collecting and analyzing security events. Linode has a cloud image that you can use to easily set up Wazuh without having to go through the complicated installation process. 
 - **Steps**:
   - Click on create. 
   - Go the Marketplace tab and search for wazuh.
@@ -21,9 +21,9 @@ Wazuh server is the central component responsible for collecting and analyzing s
 
 ### 3. How to Access Your Wazuh Server
 - **Steps**:
-    - copy the public IP open up a new tab make sure you open up the ip in your browser with the with https as opposed to http. wazuh will actually take a couple of minutes to 
-  set up because if you try and access it immediately after you set up the linode you're going to see an error so give it probably around five minutes to set up.
-    - username is ``admin``, to  get the password, copy  the SSH acces command ``ssh root@<wazuh-vm-ip>``
+    - copy the public IP open up a new tab make sure you open up the ip in your browser with the https as opposed to http. Wazuh will actually take a couple of minutes to 
+  set up because if you try and access it immediately after you set up the linode you're going to see an error, so give it probably around five minutes to set up.
+    - username is ``admin``, to  get the password, copy  the SSH acces command ``ssh root@<wazuh-server-ip>``
     - then launch your terminal. Windows, Mac and Linux. It'll all work. And paste that in there and press enter.
     - type in  this  command ``ls -al``
     - you should see a  ``.deployment-secrets.txt`` file.
@@ -37,14 +37,15 @@ Wazuh server is the central component responsible for collecting and analyzing s
   - click on deploy new agent.
   - Next, select the correct architecture and Wazuh server address.
   - Next, you will be presented with commands to download, install, and start the Wazuh agent. Copy the commands and run them in the Ubuntu Server you just installed.
-  - Verified the connection between the agent and the Wazuh server.
+  
 
 ## Testing
 ### 1. Brute Force Attack Simulation
 - **Definition**: A brute force attack is a trial-and-error method used to obtain sensitive information, such as passwords, by systematically trying all possible combinations.
-- **Tool**: Hydra is a popular password-cracking tool that supports various protocols and services.
+- **Tool**: Hydra is a popular and versatile password-cracking tool that supports various protocols for online attacks. Hydra supports a multitude of protocols, including SSH, FTP, HTTP, HTTPS, Telnet, and many more. This versatility allows security professionals to test various services and applications.
 - **Steps**:
   - Configured Hydra to perform a brute force attack on SSH service running on the Ubuntu VM.
+    
   - Executed the attack to simulate an unauthorized login attempt.
 
 ### 2. Wazuh Detection and Response
