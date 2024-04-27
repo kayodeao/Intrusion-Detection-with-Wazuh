@@ -62,7 +62,7 @@ Wazuh server is the central component responsible for collecting and analyzing s
 ### 2. Wazuh Detection and Response
 - **Detection**: Wazuh captured logs of the brute force attack, including failed login attempts and suspicious activity. 
 - **Response**: Configured Wazuh to trigger an active response mechanism to block further login attempts from the attacking IP address. **Management > Configuration > Edit configuration** . Click on **Restart Manager** after adding the command below:
-  ```bash
+```bash
 <active-response>
   <command>firewall-drop</command>
   <location>local</location>
@@ -84,7 +84,7 @@ This configuration suggests that when a rule with ID 5710 is triggered, the fire
 
 ### 2. Active Response Performance
 - **Effectiveness**: Wazuh's active response mechanism successfully blocked further login attempts from the attacking IP address.
-  ![](status-wazuh-agent.png)
+  ![](Active-response1.png)
 
 
 ## Conclusion
