@@ -92,7 +92,7 @@ This configuration suggests that when a rule with ID 5710 is triggered, the fire
 - We proceed with the brute force operation using Hydra from Kali.
   ![](img/hydra.png)
 
-## 3. Effectiveness
+### 3. Effectiveness
 - After the brute force attempt, our rule is activated, resulting in the blocking of the attacker's IP address. We can subsequently verify the status of the connection and review alerts on Wazuh.
 
   ![](img/test.png)
