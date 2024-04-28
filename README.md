@@ -19,6 +19,8 @@ Wazuh server is the central component responsible for collecting and analyzing s
   - Enter a label (whatever you want)
   - Enter a root password
   - Click on 'create linode'
+ 
+  ![](img/linodes.png)
 
 
 ### 3. How to Access Your Wazuh Server
@@ -96,6 +98,7 @@ This configuration suggests that when a rule with ID 5710 is triggered, the fire
 - After the brute force attempt, our rule is activated, resulting in the blocking of the attacker's IP address. We can subsequently verify the status of the connection and review alerts on Wazuh.
 
   ![](img/test.png)
+  
 
   ![](img/POC.png)
   
